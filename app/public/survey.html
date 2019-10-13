@@ -14,7 +14,146 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>FriendFinder</title>
 </head>
-<body>
-    <h1>hello world</h1>
+<body style="margin: auto 2rem auto 2rem">
+    <h1>Survey Questions</h1>
+    <hr>
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input type="email" class="form-control" id="name" aria-describedby="emailHelp">
+          <small id="email" class="form-text text-muted">Required</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Link to Photo Image</label>
+            <input type="email" class="form-control" id="photo" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Required</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You enjoy exploring to clear your head.</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You would never harm an innocent.</label>
+            <select class="form-control" id="exampleFormControlSelect2">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You enjoy scientific research.</label>
+            <select class="form-control" id="exampleFormControlSelect3">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You get distracted easily but your heart is in the right place.</label>
+            <select class="form-control" id="exampleFormControlSelect4">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You put the needs of people above your own.</label>
+            <select class="form-control" id="exampleFormControlSelect5">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You find it difficult to understand how to take care of plants.</label>
+            <select class="form-control" id="exampleFormControlSelect6">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You enjoy being in control.</label>
+            <select class="form-control" id="exampleFormControlSelect7">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You don't let overwhelming situations disway you.</label>
+            <select class="form-control" id="exampleFormControlSelect8">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You might be considered a bit controlling.</label>
+            <select class="form-control" id="exampleFormControlSelect9">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">You had interesting concepts of right and wrong when you were young.</label>
+            <select class="form-control" id="exampleFormControlSelect10">
+              <option>1 (Strongly Disagree)</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 (Strongly Agree)</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+      </form>
+
+    <ul class="nav" style="margin: auto 0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">API Friendlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/baileymbeck/Friend-Finder/tree/master">GitHub Repo</a>
+        </li>
+    </ul>
+    
+
+    <script type="text/javascript">
+    $("#submit").click(function(event){
+      event.preventDefault();
+      var userData =  {
+        name: $("#name").val(),
+        photo: $("photo").val(),
+        scores: [$("exampleFormControlSelect1").val(), "5", "1", "2", "5", "1", "2", "5", "5", "1"]
+    };
+
+    $.post("/api/friends", userData, function(data){
+      alert(data.name, data.photo);
+    })
+    })
+    </script>
 </body>
 </html>
