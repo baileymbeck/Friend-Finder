@@ -8,18 +8,18 @@
 var friends = [
     {
         name: "Finn the Human",
-        photo: "",
+        photo: "/images/finn.jpg",
         scores: ["5", "5", "1", "2", "5", "1", "2", "5", "5", "1"]
     },
     {
         name: "Jake the Dog",
-        photo: "",
-        scores: ["5", "5", "1", "2", "5", "1", "2", "5", "5", "1"]
+        photo: "/images/jake.jpg",
+        scores: ["3", "4", "1", "5", "3", "5", "2", "2", "1", "5"]
     },
     {
         name: "Peebles",
-        photo: "",
-        scores: ["5", "5", "1", "2", "5", "1", "2", "5", "5", "1"]
+        photo: "/images/peeb.png",
+        scores: ["1", "3", "5", "1", "1", "5", "4", "5", "5", "3"]
     }
 ];
 

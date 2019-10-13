@@ -1,6 +1,6 @@
 // referencing friend.js
 
-var friends = require("../data/friends");
+var friends = require("../data/friend");
 
 module.exports = function(app) {
   // API GET Requests
