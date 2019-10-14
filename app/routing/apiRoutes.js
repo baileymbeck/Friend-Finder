@@ -2,6 +2,7 @@
 
 var friends = require("../data/friend");
 
+
 module.exports = function(app) {
   // API GET Requests
   // Below code handles when users "visit" a page.
