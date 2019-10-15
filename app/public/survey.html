@@ -28,15 +28,16 @@
   <hr>
   <form>
     <div class="form-group">
-      <label for="exampleInputEmail1">Name</label>
-      <input type="text" class="form-control" id="name">
+      <label>Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" required>
       <small class="form-text text-muted">Required</small>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Link to Photo Image</label>
-      <input type="text" class="form-control" id="photo">
+      <label>Link to Photo Image</label>
+      <input type="text" class="form-control" id="photo" placeholder="Link" required>
       <small class="form-text text-muted">Required</small>
     </div>
+
     <div class="form-group">
       <label for="exampleFormControlSelect1">You enjoy exploring to clear your head.</label>
       <select class="form-control" id="exampleFormControlSelect1">
@@ -178,7 +179,6 @@
     $(document).ready(function () {
       $("#submit").click(function (event) {
         event.preventDefault();
-        console.log(userData);
         var userData = {
           name: $("#name").val(),
           photo: $("#photo").val(),
@@ -190,9 +190,18 @@
             $("#exampleFormControlSelect9").val(), $("#exampleFormControlSelect10").val()
           ]
         };
+      
+        // vain attempts to prevent blank submissions
         $.post("/api/friends", userData, function (data) {
-          $("#match-name").text(data.name);
-          $("#match-img").attr("src", data.photo);
+          var placeholder = $("#name").attr("placeholder");
+          if (userData.name === placeholder) {
+            $("#match-name").text("Please fill in the required field to continue.");
+          }else if(userData.photo === "Link"){
+            $("#match-name").text("Please fill in the required field to continue.");
+          } else{
+            $("#match-name").text(data.name);
+            $("#match-img").attr("src", data.photo);
+          }
         })
       })
     });
